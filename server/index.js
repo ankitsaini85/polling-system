@@ -7,9 +7,13 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'https://polling-system-4wlvsa12q-ankit-sainis-projects-b6e2b568.vercel.app', 
-    methods: ['GET', 'POST']
-  }
+    origin: ['http://localhost:5174', 'https://polling-system-4wlvsa12q-ankit-sainis-projects-b6e2b568.vercel.app/'],
+    methods: ['GET', 'POST'],
+    credentials: true
+  },
+  transports: ['websocket', 'polling'],
+  allowEIO4: true,
+  allowEIO3: true
 });
 
 app.use(cors());

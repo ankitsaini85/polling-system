@@ -3,7 +3,10 @@ import { io } from 'socket.io-client';
 import './TeacherPanel.css';
 import ChatBox from './ChatBox';
 
-const socket = io('https://polling-system-wkyf.onrender.com');
+const socket = io('https://polling-system-wkyf.onrender.com', {
+  transports: ['websocket'],
+  withCredentials: true
+});
 
 const TeacherPanel = () => {
   const [question, setQuestion] = useState('');
