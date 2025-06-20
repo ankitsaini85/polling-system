@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { io } from 'socket.io-client';
+import socket from './socket';
 import './TeacherPanel.css';
 import ChatBox from './ChatBox';
-
-const socket = io('https://polling-system-wkyf.onrender.com', {
-  transports: ['websocket'],
-  withCredentials: true
-});
 
 const TeacherPanel = () => {
   const [question, setQuestion] = useState('');
@@ -25,19 +20,26 @@ const TeacherPanel = () => {
   };
 
   useEffect(() => {
-    socket.on('poll_results', (data) => {
-  setResults(data);
-  setPollHistory(prev => {
-    const exists = prev.some(p => p.question === data.question);
-    return exists ? prev : [...prev, data];
-  });
-  setCanAsk(false);
-});
+    const handleResults = (data) => {
+      setResults(data);
+      setPollHistory(prev => {
+        const exists = prev.some(p => p.question === data.question);
+        return exists ? prev : [...prev, data];
+      });
+      setCanAsk(false);
+    };
 
-
-    socket.on('update_students', (students) => {
+    const handleStudents = (students) => {
       setStudentList(students);
-    });
+    };
+
+    socket.on('poll_results', handleResults);
+    socket.on('update_students', handleStudents);
+
+    return () => {
+      socket.off('poll_results', handleResults);
+      socket.off('update_students', handleStudents);
+    };
   }, []);
 
   const resetPoll = () => {
@@ -134,21 +136,22 @@ const TeacherPanel = () => {
           <div className="student-list-modal">
             <h3>Participants</h3>
             <ul>
-  {studentList.map((s, i) => (
-    <li key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-      <span>{s}</span>
-      <button
-        className="kick-btn"
-        onClick={() => socket.emit('kick_student', { name: s })}
-      >
-        Kick
-      </button>
-    </li>
-  ))}
-</ul>
+              {studentList.map((s, i) => (
+                <li key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span>{s}</span>
+                  <button
+                    className="kick-btn"
+                    onClick={() => socket.emit('kick_student', { name: s })}
+                  >
+                    Kick
+                  </button>
+                </li>
+              ))}
+            </ul>
             <button onClick={() => setShowStudentList(false)} className="close-btn">Close</button>
           </div>
         )}
+
         <ChatBox username="Teacher" />
       </div>
     </div>

@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { io } from 'socket.io-client';
+import socket from './socket';
 import './StudentPanel.css';
 import ChatBox from './ChatBox';
-
-const socket = io('https://polling-system-wkyf.onrender.com', {
-  transports: ['websocket'],
-  withCredentials: true
-});
 
 const StudentPanel = () => {
   const [name, setName] = useState(sessionStorage.getItem('studentName') || '');
@@ -21,23 +16,33 @@ const StudentPanel = () => {
       socket.emit('student_join', { name });
     }
 
-    socket.on('new_poll', (data) => {
+    const handleNewPoll = (data) => {
       setQuestion(data);
       setAnswer(null);
       setResults(null);
       setTimer(60);
-    });
+    };
 
-    socket.on('poll_results', (data) => {
+    const handlePollResults = (data) => {
       setResults(data);
-    });
+    };
 
-    socket.on('kicked', () => {
+    const handleKicked = () => {
       setKicked(true);
       setQuestion(null);
       setResults(null);
       setTimer(0);
-    });
+    };
+
+    socket.on('new_poll', handleNewPoll);
+    socket.on('poll_results', handlePollResults);
+    socket.on('kicked', handleKicked);
+
+    return () => {
+      socket.off('new_poll', handleNewPoll);
+      socket.off('poll_results', handlePollResults);
+      socket.off('kicked', handleKicked);
+    };
   }, [name]);
 
   useEffect(() => {
@@ -130,7 +135,7 @@ const StudentPanel = () => {
               return (
                 <div key={idx} className="result-bar">
                   <span>{opt}</span>
-                  <strong>{results.votes[idx]} votes • {percent}%</strong>z
+                  <strong>{results.votes[idx]} votes • {percent}%</strong>
                 </div>
               );
             })}
