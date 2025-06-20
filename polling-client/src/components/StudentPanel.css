@@ -1,0 +1,149 @@
+.student-wrapper {
+  background-color: #f2f2f2;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.student-content {
+  background: white;
+  padding: 40px;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 14px;
+  background-color: #7755da;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin: 16px 0;
+}
+
+.continue-btn {
+  padding: 12px 24px;
+  background-color: #7755da;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.poll-box {
+  margin-top: 24px;
+  text-align: left;
+}
+
+.poll-question {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.poll-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.poll-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.poll-option.selected {
+  border-color: #7755da;
+  background-color: #f4f0ff;
+}
+
+.timer {
+  color: #999;
+  margin-bottom: 12px;
+}
+
+.results-box {
+  margin-top: 24px;
+  text-align: left;
+}
+
+.result-bar {
+  background: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+.waiting-text {
+  font-size: 16px;
+  color: #555;
+  margin-top: 20px;
+}
+.result-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f4f0ff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+.kicked-screen {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.kicked-screen .title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-top: 16px;
+}
+
+.kicked-screen .subtitle {
+  font-size: 16px;
+  color: #666;
+  margin-top: 8px;
+}

@@ -1,0 +1,122 @@
+.teacher-wrapper {
+  background-color: #f2f2f2;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.teacher-content {
+  background: white;
+  padding: 40px;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 14px;
+  background-color: #7755da;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.form-section {
+  margin-top: 20px;
+}
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 16px;
+}
+
+.options-list {
+  margin-top: 16px;
+}
+
+.add-option-btn {
+  background: none;
+  border: none;
+  color: #7755da;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.continue-btn {
+  margin-top: 24px;
+  padding: 12px 24px;
+  background-color: #7755da;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.waiting-text {
+  font-size: 16px;
+  color: #555;
+  margin-top: 20px;
+}
+
+.results-card {
+  margin-top: 32px;
+  background: #f4f0ff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.results-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.results-card p {
+  background-color: #f4f0ff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+.kick-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
