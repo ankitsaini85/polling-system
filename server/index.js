@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5174', // Update if needed
+    origin: 'https://polling-system-4wlvsa12q-ankit-sainis-projects-b6e2b568.vercel.app', 
     methods: ['GET', 'POST']
   }
 });
